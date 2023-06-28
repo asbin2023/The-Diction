@@ -1,12 +1,70 @@
-* {
-box-sizing: border-box;
-}
-
 .pink {
   color: rgb(89, 88, 88);
   background-color: bisque;
 }
-.green{
-    color: rgb(0, 0, 0);
-    background-color: rgb(212, 239, 210);
+.green {
+  color: rgb(0, 0, 0);
+  background-color: rgb(212, 239, 210);
+}
+
+.grid {
+  width: 60%px;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  background-color: rgb(234, 234, 234);
+}
+body {
+  background-color: rgba(242, 242, 242, 0.961);
+}
+p {
+  font-size: 27px;
+}
+* {
+  box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: black;
+}
+.con {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 10px;
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+h1,
+h2 {
+  font-size: 27px;
+}
+h2 {
+  font-size: 35px;
+}
+.input {
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 27px;
+}
+.submit {
+  cursor: pointer;
+  font-size: 25px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+button{
+  font-size: 23px;
 }

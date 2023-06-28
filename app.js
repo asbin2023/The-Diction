@@ -98,6 +98,7 @@ let counter = 0;
 let bad = 0;
 let h2 = document.querySelector("h2");
 let div = document.querySelector("div");
+let grid = document.querySelector(".grid");
 
 async function getWords() {
   try {
@@ -114,22 +115,21 @@ async function getWords() {
     console.log(error);
   }
   if (words.length <= 75) {
-    h2.innerHTML = `Your score is ${points}/100`;
+    p.innerHTML = `Your score is ${points}/100.`;
     input.style.display = "none";
     submit.style.display = "none";
-    p.style.display = "none";
+    // p.style.display = "none";
     let endPrompt = prompt("Play again? y/n");
     if (endPrompt.toLowerCase() === "yes" || endPrompt.toLowerCase() === "y") {
       let bigRed = document.createElement("button");
-      bigRed.innerHTML = "Again";
-      body.appendChild(bigRed);
+      bigRed.innerHTML = "Play Again";
+      grid.appendChild(bigRed);
       console.log(bigRed);
       bigRed.addEventListener("click", function () {
         window.location.reload();
       });
-    } else {
     }
-    h1.innerHTML = "Thank you for playing";
+    p.innerHTML += " Thanks for playing!";
   }
 }
 
