@@ -107,7 +107,6 @@ async function getWords() {
     const data_url = `https://api.dictionaryapi.dev/api/v2/entries/en/${randomWord}`;
     const response = await fetch(data_url);
     const data = await response.json();
-
     const def = data[0].meanings[0].definitions[0].definition;
     p.innerHTML = def;
     console.log(randomWord);
@@ -135,7 +134,7 @@ async function getWords() {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
+  input.disabled = false;
   if (input.value.toLowerCase() == randomWord.toLowerCase()) {
     console.log("hey");
     points += 10;
@@ -143,14 +142,27 @@ form.addEventListener("submit", function (e) {
     input.classList.add("green");
     console.log(points);
     words.pop(randomWord);
+    input.value = "";
     getWords();
   } else {
     input.classList.remove("green");
     input.classList.add("pink");
     alert("Incorrect!");
     bad++;
-    if (bad >= 3) {
+    if (bad == 1) {
+      alert(`Hint #1: Word length: ${randomWord.length}`);
+      input.value = "";
+    } else if (bad == 2) {
+      alert(
+        `Hint #2: The word starts with '${randomWord[0]}', and ends with '${
+          randomWord[randomWord.length - 1]
+        }' `
+      );
+      input.value = "";
+    } else if (bad >= 3) {
       alert(`The word is: ${randomWord}`);
+      input.value = randomWord;
+      input.disabled = true;
       bad = 0;
     }
     if (points <= 0) {
@@ -158,7 +170,15 @@ form.addEventListener("submit", function (e) {
     }
     points -= 5;
   }
-  input.value = "";
 });
 
 getWords();
+
+// async function wordEx() {
+//   const resp = await fetch(
+//     `https://dictionaryapi.com/api/v3/references/thesaurus/json/${randomWord}?key=f9f75c94-31a0-4baf-aee8-2609d7462b67`
+//   );
+//   const data2 = await resp.json();
+//   console.log(data2);
+// }
+// wordEx();

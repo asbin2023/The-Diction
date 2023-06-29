@@ -1,21 +1,29 @@
 .pink {
-  color: rgb(89, 88, 88);
-  background-color: bisque;
+  color: rgb(0, 0, 0);
+  background-color: rgb(252, 196, 184);
 }
 .green {
   color: rgb(0, 0, 0);
-  background-color: rgb(212, 239, 210);
+  border-radius: 3px;
+  background-color: rgba(205, 255, 191, 0.541);
+  
 }
 
 .grid {
   width: 60%px;
-  height: 40vh;
+  height: 40%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   margin-top: 10%;
   background-color: rgb(234, 234, 234);
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 30px;
+  text-align: center;
+  border-radius: 30px;
+  border: 1px solid black;
 }
 body {
   background-color: rgba(242, 242, 242, 0.961);
@@ -45,26 +53,42 @@ a {
   text-decoration: none;
   color: black;
 }
-h1,
-h2 {
-  font-size: 27px;
-}
-h2 {
-  font-size: 35px;
+h1 {
+  font-size: 40px;
+  text-decoration: underline 10px;
 }
 .input {
   margin-top: 25px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 17px;
   font-size: 27px;
 }
 .submit {
   cursor: pointer;
   font-size: 25px;
-  padding: 15px;
+  padding: 20px;
   margin-top: 20px;
+  border-radius: 15px;
 }
 
-button{
+button {
   font-size: 23px;
+}
+.change, .change2{
+  border-radius: 10px;
+  padding: 10px;
+  
+
+}
+.change:hover {
+  color: white;
+  background-color: rgb(61, 61, 61);
+}
+.change2:hover {
+  color: white;
+  background-color: rgb(61, 61, 61);
+}
+
+.home{
+  text-decoration: underline 4px;
 }
