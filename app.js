@@ -1,3 +1,15 @@
+lofi = document.querySelector("audio");
+sound = document.querySelector(".sound");
+sound.addEventListener("click", function (e) {
+  e.preventDefault();
+  lofi.play();
+});
+sound.addEventListener("dblclick", function (e) {
+  e.preventDefault();
+  lofi.pause();
+});
+
+// })
 const words = [
   "Achievement",
   "Brilliant",
@@ -85,9 +97,7 @@ const words = [
   "Youthful",
   "Zeal",
 ];
-alert(
-  "Welcome to the Dictionary Word Guesser Game!\n\nImmerse yourself in an exciting 2-player challenge where words come to life. Compete against a friend and put your language skills to the test. Unravel mysterious words, earn points with each correct guess, and strive to outscore your opponent.\n\nAre you ready to become the ultimate word champion? Let the thrilling word guessing adventure begin!"
-);
+
 const words2 = [...words];
 
 let p = document.querySelector(".one p");
@@ -144,6 +154,7 @@ async function getWords() {
     if (endPrompt.toLowerCase() === "yes" || endPrompt.toLowerCase() === "y") {
       let bigRed = document.createElement("button");
       bigRed.innerHTML = "Play Again";
+      bigRed.classList.add("sound");
       form.appendChild(bigRed);
       console.log(bigRed);
       bigRed.addEventListener("click", function () {
@@ -190,6 +201,7 @@ async function getWords2() {
     if (endPrompt.toLowerCase() === "yes" || endPrompt.toLowerCase() === "y") {
       let bigRed = document.createElement("button");
       bigRed.innerHTML = "Play Again";
+      bigRed.classList.add("sound");
       form.appendChild(bigRed);
       console.log(bigRed);
       bigRed.addEventListener("click", function () {
