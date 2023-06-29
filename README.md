@@ -15,5 +15,6 @@ Hints are provided to players to assist them in guessing the correct definition.
 Points system to track players' scores.
 The winner is determined based on the player with the highest score at the end of the game.
 
-Credits
+Credit to the API used:
+
 https://dictionaryapi.dev/
