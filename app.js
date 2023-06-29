@@ -86,19 +86,24 @@ const words = [
   "Zeal",
 ];
 
-let h1 = document.querySelector("h1");
-let p = document.querySelector("p");
+const words2 = [...words];
+
+let p = document.querySelector(".one p");
+let p2 = document.querySelector(".p2");
 let submit = document.querySelector(".submit");
 let input = document.querySelector(".input");
+let submit2 = document.querySelector(".submit2");
+let input2 = document.querySelector(".input2");
 let body = document.querySelector("body");
-let form = document.querySelector("form");
+let form = document.querySelector(".grid");
+let form2 = document.querySelector(".grid2");
 let points = 0;
 let randomWord;
-let counter = 0;
+let randomWord2;
+let points2 = 0;
+let bad2 = 0;
 let bad = 0;
 let h2 = document.querySelector("h2");
-let div = document.querySelector("div");
-let grid = document.querySelector(".grid");
 
 async function getWords() {
   try {
@@ -113,16 +118,77 @@ async function getWords() {
   } catch (error) {
     console.log(error);
   }
-  if (words.length <= 75) {
-    p.innerHTML = `Your score is ${points}/100.`;
+  if (words.length <= 80) {
+    input.disabled = true;
+    submit.disabled = true;
+    p.innerHTML = "Do Player 2";
+  }
+  if (words.length <= 80 && words2.length <= 80) {
+    if (points > points2) {
+      p.innerHTML = `Player 1 won -- (${points}/50)`;
+    } else if (points < points2) {
+      p.innerHTML = `Player 2 won -- (${points2}/50)`;
+    } else {
+      p.innerHTML = `It's a tie! Player 1 and Player 2 both scored ${points2}. `;
+    }
     input.style.display = "none";
     submit.style.display = "none";
-    // p.style.display = "none";
+    input2.style.display = "none";
+    submit2.style.display = "none";
+    p2.style.display = "none";
+    form2.style.display = "none";
+
     let endPrompt = prompt("Play again? y/n");
     if (endPrompt.toLowerCase() === "yes" || endPrompt.toLowerCase() === "y") {
       let bigRed = document.createElement("button");
       bigRed.innerHTML = "Play Again";
-      grid.appendChild(bigRed);
+      form.appendChild(bigRed);
+      console.log(bigRed);
+      bigRed.addEventListener("click", function () {
+        window.location.reload();
+      });
+    }
+    p.innerHTML += " Thanks for playing!";
+  }
+}
+async function getWords2() {
+  try {
+    bad2 = 0;
+    randomWord2 = words2[Math.floor(Math.random() * words2.length)];
+    const data_url2 = `https://api.dictionaryapi.dev/api/v2/entries/en/${randomWord2}`;
+    const response2 = await fetch(data_url2);
+    const data2 = await response2.json();
+    const def2 = data2[0].meanings[0].definitions[0].definition;
+    p2.innerHTML = def2;
+    console.log(randomWord2);
+  } catch (error) {
+    console.log(error);
+  }
+  if (words2.length <= 80) {
+    input2.disabled = true;
+    submit2.disabled = true;
+    p2.innerHTML = "Do Player 1";
+  }
+  if (words.length <= 80 && words2.length <= 80) {
+    if (points > points2) {
+      p.innerHTML = `Player 1 won -- (${points}/50)`;
+    } else if (points < points2) {
+      p.innerHTML = `Player 2 won -- (${points2}/50)`;
+    } else {
+      p.innerHTML = `It's a tie! Player 1 and Player 2 both scored ${points2}. `;
+    }
+    input.style.display = "none";
+    submit.style.display = "none";
+    input2.style.display = "none";
+    submit2.style.display = "none";
+    form2.style.display = "none";
+    p2.style.display = "none";
+
+    let endPrompt = prompt("Play again? y/n");
+    if (endPrompt.toLowerCase() === "yes" || endPrompt.toLowerCase() === "y") {
+      let bigRed = document.createElement("button");
+      bigRed.innerHTML = "Play Again";
+      form.appendChild(bigRed);
       console.log(bigRed);
       bigRed.addEventListener("click", function () {
         window.location.reload();
@@ -132,25 +198,25 @@ async function getWords() {
   }
 }
 
-form.addEventListener("submit", function (e) {
+submit.addEventListener("click", function (e) {
   e.preventDefault();
+
   input.disabled = false;
   if (input.value.toLowerCase() == randomWord.toLowerCase()) {
     console.log("hey");
     points += 10;
     input.classList.remove("pink");
     input.classList.add("green");
-    console.log(points);
-    words.pop(randomWord);
+    let ind = words[randomWord];
+    words.splice(ind, 1);
     input.value = "";
     getWords();
   } else {
     input.classList.remove("green");
     input.classList.add("pink");
-    alert("Incorrect!");
     bad++;
     if (bad == 1) {
-      alert(`Hint #1: Word length: ${randomWord.length}`);
+      alert(`Incorrect! Hint #1: Word length: ${randomWord.length}`);
       input.value = "";
     } else if (bad == 2) {
       alert(
@@ -172,13 +238,44 @@ form.addEventListener("submit", function (e) {
   }
 });
 
-getWords();
+submit2.addEventListener("click", function (e) {
+  e.preventDefault();
+  input2.disabled = false;
+  if (input2.value.toLowerCase() == randomWord2.toLowerCase()) {
+    console.log("hey");
+    points2 += 10;
+    input2.classList.remove("pink");
+    input2.classList.add("green");
+    let ind2 = words2[randomWord2];
+    words2.splice(ind2, 1);
+    input2.value = "";
+    getWords2();
+  } else {
+    input2.classList.remove("green");
+    input2.classList.add("pink");
+    bad2++;
+    if (bad2 == 1) {
+      alert(`Incorrect! Hint #1: Word length: ${randomWord2.length}`);
+      input2.value = "";
+    } else if (bad2 == 2) {
+      alert(
+        `Hint #2: The word starts with '${randomWord2[0]}', and ends with '${
+          randomWord2[randomWord2.length - 1]
+        }' `
+      );
+      input2.value = "";
+    } else if (bad2 >= 3) {
+      alert(`The word is: ${randomWord2}`);
+      input2.value = randomWord2;
+      input2.disabled = true;
+      bad2 = 0;
+    }
+    if (points2 <= 0) {
+      points2 = 0;
+    }
+    points2 -= 5;
+  }
+});
 
-// async function wordEx() {
-//   const resp = await fetch(
-//     `https://dictionaryapi.com/api/v3/references/thesaurus/json/${randomWord}?key=f9f75c94-31a0-4baf-aee8-2609d7462b67`
-//   );
-//   const data2 = await resp.json();
-//   console.log(data2);
-// }
-// wordEx();
+getWords();
+getWords2();
