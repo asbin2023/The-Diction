@@ -11,6 +11,7 @@ The Random Word Game is a 2-player game project that generates a random word fro
 Features:
 
 Two-player game with a turn-based system.
+Optional background music 
 Random word generation from an array.
 Integration with an API to fetch word definitions.
 Hints are provided to players to assist them in guessing the correct definition.
