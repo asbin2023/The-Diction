@@ -17,6 +17,10 @@ Hints are provided to players to assist them in guessing the correct definition.
 Points system to track players' scores.
 The winner is determined based on the player with the highest score at the end of the game.
 
-Credits to the API used:
+Credits:
 
 https://dictionaryapi.dev/
+
+https://pixabay.com/music/search/lofi/
+
+https://unsplash.com/photos/T6fDN60bMWY
