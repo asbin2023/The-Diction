@@ -20,5 +20,7 @@ The winner is determined based on the player with the highest score at the end o
 Credits:
 
 https://dictionaryapi.dev/
+
 https://pixabay.com/music/search/lofi/
+
 https://unsplash.com/photos/T6fDN60bMWY
