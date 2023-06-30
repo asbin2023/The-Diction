@@ -1,13 +1,14 @@
 .pink {
   color: rgb(0, 0, 0);
-  background-color: rgb(251, 230, 226);
+  background-color: rgba(184, 120, 197, 0.161);
 }
 .green {
   border-radius: 3px;
+  background-color: rgba(178, 216, 252, 0.189);
 }
 
 .grid {
-  height: 40%;
+  height: 30%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22,11 +23,15 @@
   border: 1px solid black;
   margin-bottom: 3%;
 }
+.all {
+  width: 70%;
+  margin: 0 auto;
+}
 .sound {
   cursor: pointer;
 }
 .grid2 {
-  height: 40%;
+  height: 30%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -144,3 +149,4 @@ header {
   position: sticky;
   top: 0;
 }
+
