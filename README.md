@@ -1,6 +1,6 @@
 # The Diction  // Mod 1 Project
 
-Deploy link: https://asbin2023.github.io/Mod-1-project/
+Deploy link: https://asbin2023.github.io/The-Diction/
 
 
 Description:
